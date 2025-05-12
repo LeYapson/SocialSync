@@ -1,3 +1,13 @@
+<nav class="navbar">
+  <div class="brand">
+    <a routerLink="/home">SocialSync</a>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+    <li><a routerLink="/profiles" routerLinkActive="active">Profils</a></li>
+  </ul>
+</nav>
 
-  <app-profile></app-profile>
-
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

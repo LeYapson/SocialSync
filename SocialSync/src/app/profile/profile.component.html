@@ -1,8 +1,39 @@
-<div class="profiles">
-  <div *ngFor="let profile of profiles">
+<div class="search-container">
+  <input pInputText id="on_label" [(ngModel)]="searchText" #letterSearch placeholder="Filtrer par nom de famille" />
+  <button (click)="getProfilesFiltered(letterSearch.value)">Rechercher</button>
+  <button (click)="resetFilter()">Reset</button>
+</div>
+
+<!-- Ajout du sélecteur de nombre de profils -->
+<div class="limit-container">
+  <label for="profileLimit">Nombre de profils à afficher:</label>
+  <select id="profileLimit" [(ngModel)]="selectedLimit" (change)="onLimitChange()">
+    <option [value]="5">5 profils</option>
+    <option [value]="10">10 profils</option>
+    <option [value]="20">20 profils</option>
+    <option [value]="30">30 profils</option>
+  </select>
+</div>
+
+<!-- Afficher un loader pendant le chargement -->
+<div *ngIf="profilesResource.isLoading()" class="loading-container">
+  <div class="loader">Chargement des profils...</div>
+</div>
+
+<!-- Afficher un message d'erreur si l'appel API échoue -->
+<div *ngIf="profilesResource.error() as error" class="error-container">
+  <p class="error-message">Erreur: {{ 'Une erreur s\'est produite' }}</p>
+</div>
+
+<!-- Afficher les profils une fois chargés -->
+<div *ngIf="profilesResource.value()" class="profiles">
+  <div *ngFor="let profile of filteredProfiles">
     <div class="profile">
       <img [src]="profile.image" alt="Profile Image" />
       <app-profile-detail [profileDetail]="profile"></app-profile-detail>
+      <div class="profile-actions">
+        <a [routerLink]="['/detail', profile.id]" class="view-details-btn">Voir le profil complet</a>
+      </div>
     </div>
   </div>
 </div>
