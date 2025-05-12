@@ -1,0 +1,12 @@
+<div class="profile-detail"
+     *ngIf="profileDetail"
+     [ngClass]="{
+       'item-user-m': profileDetail.gender === 'male',
+       'item-user-f': profileDetail.gender === 'female'
+     }">
+  <h2>{{profileDetail.firstName}} {{profileDetail.lastName}}</h2>
+  <p>Email: {{profileDetail.email}}</p>
+  <p>Phone: {{profileDetail.phone}}</p>
+  <p>Username: {{profileDetail.username}}</p>
+  <p>Gender: {{profileDetail.gender}}</p>
+</div>
