@@ -32,4 +32,13 @@ export class ProfileService {
   getProfiles(): Profile[] {
     return this.profileResource.value() || [];
   }
+
+  // Ajoutez cette méthode au service ProfileService
+getProfileById(id: number): Profile | undefined {
+  const profiles = this.profileResource.value();
+  if (profiles) {
+    return profiles.find((profile: Profile) => profile.id === id);
+  }
+  return undefined;
+}
 }
