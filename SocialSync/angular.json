@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SocialSync": {
+    "socialsync": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/social-sync",
+            "outputPath": "dist/socialsync",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SocialSync:build:production"
+              "buildTarget": "socialsync:build:production"
             },
             "development": {
-              "buildTarget": "SocialSync:build:development"
+              "buildTarget": "socialsync:build:development"
             }
           },
           "defaultConfiguration": "development"
